@@ -1,0 +1,35 @@
+{% extends 'admin/AdminHome.html' %}
+{% block body %}
+<body>
+<form action="/myapp/Add_syllabus_post/#abc" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table class="table table-bordered">
+    <tr>
+      <td width="190px">Subject</td>
+      <td><label for="select"></label>
+        <select name="select" id="select"class="form-control">
+                    <option value=" ">-----Select-----</option>
+
+            {% for i in data %}
+            <option value="{{ i.id }}">{{ i.Subname }}</option>
+            {% endfor %}
+      </select></td>
+    </tr>
+    <tr>
+      <td width="190px">Syllabus</td>
+      <td><label for="textfield"></label>
+        <label for="fileField"></label>
+      <input type="file" name="fileField" id="fileField" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td width="190px">year</td>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2"><input type="submit" name="button" id="button" value="Add" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

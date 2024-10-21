@@ -1,0 +1,18 @@
+{% extends 'admin/AdminHome.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/Add_department_post/#abc">
+    {% csrf_token %}
+  <table class="table table-bordered ">
+    <tr>
+      <td width="190px">Department Name</td>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control"required/></td>
+    </tr>
+    <tr>
+      <td colspan="2"align="center"><input type="submit" name="button" id="button" value="Submit" class="btn btn-success"/></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,60 @@
+
+{% extends 'Teacher/Teacher Home.html' %}
+{% block body %}
+
+<body>
+  <form method="post" action="/myapp/TView_doubts_post/#abc">
+    {% csrf_token %}
+
+
+<div class="container ">
+<br>
+<table class="pull-left">
+    <tr>
+        <td>From</td>
+        <td>
+            <input type="date" placeholder="Search here" name="f" class="form-control">
+        </td>
+        <td>To</td>
+         <td>
+            <input type="date" placeholder="Search here" name="t" class="form-control">
+        </td>
+        <td>
+            <input type="submit" value="Search" class="btn btn-info">
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+
+    <table class="table table-bordered " >
+    <tr>
+        <th>SNo</th>
+        <th>Date</th>
+        <th>From</th>
+        <th>Doubt</th>
+
+<th >Status</th>
+
+         <th >Solution</th>
+
+    </tr>
+        {% for i in data %}
+        <tr>
+    <td width="50px" >{{ forloop.counter }}</td>
+          <td width="110px" >{{ i.date }}</td>
+    <td>{{ i.STUDENT.sname }}</td>
+    <td>{{ i.doubt}}</td>
+ <td>{{ i.Status }}</td>
+    <td width="50px">{% if i.Status == 'pending' %}<a class="btn btn-success" href="/myapp/Send_Solution/{{ i.id }}#abc">solution</a>
+    {% else %}{{ i.Solution }}{% endif %}</td>
+
+
+    </tr>
+    {% endfor %}
+    </table>
+
+</div>
+    </form>
+</body>
+{% endblock %}

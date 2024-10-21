@@ -1,0 +1,60 @@
+{% extends 'Teacher/Teacher Home.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/T_view_lvideo_post/#abc">{% csrf_token %}
+<table class="pull-left">
+    <tr>
+        <td>From</td>
+        <td>
+            <input type="date" placeholder="Search here" name="f" class="form-control">
+        </td>
+        <td>To</td>
+         <td>
+            <input type="date" placeholder="Search here" name="t" class="form-control">
+<input type="hidden" name="sid"value="{{ id }}">
+
+
+        </td>
+        <td>
+            <input type="submit" value="Search" class="btn btn-info">
+        </td>
+    </tr>
+</table><br><br>
+
+  <table class=" table table-bordered  ">
+    <tr>
+      <th>Sl.no</th>
+      <th>Selected Subject Details</th>
+            <th>Date</th>
+      <th>Title</th>
+      <th> video</th>
+        <td></td>
+        <td></td>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{ forloop.counter }}</td>
+      <td>{{ i.SELECTED_SUBJECT.SUBJECT.Subname }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+        <td>{{ i.title }}</td>
+<td>
+    <video width="400" height="300" controls>
+  <source src="{{ i.videos }}" type="video/mp4">
+{#  <source src="mov_bbb.ogg" type="video/ogg">#}
+  Your browser does not support HTML video.
+</video>
+
+{#    <video width="320" height="240">#}
+{#                <source src="{{ i.videos }}" type="video/mp4">#}
+{#            </video>#}
+
+</td>
+        <td width="50px"><a href="{{ i.videos }}" download class="btn btn-success">Download</a></td>
+      <td width="50px"><a href="/myapp/delete_videos/{{ i.id }}#abc"class="btn btn-danger">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

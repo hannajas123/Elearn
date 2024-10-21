@@ -1,0 +1,37 @@
+{% extends 'Student/StudentHome.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/S_downloadsyllabus_post/#abc">{% csrf_token %}
+<table class="fa-pull-left">
+    <tr>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control"placeholder="Search with subject"/></td>
+      <td><input type="submit" name="button" id="button" value="Search" class="btn btn-info"/></td>
+
+    </tr>
+  </table>
+<br>
+<br>
+  <table class="table table-bordered ">
+    <tr>
+      <th>SL.no</th>
+      <th>Subject Details</th>
+      <th>Syllabus</th>
+      <th>Year</th>
+        <td></td>
+    </tr>
+     {% for i in data %}
+    <tr>
+      <td width="50px">{{ forloop.counter }}</td>
+              <td>&nbsp;{{ i.SUBJECT.Subname }}<br>{{ i.SUBJECT.semester }}</td>
+
+      <td width="50px">&nbsp;<a href="{{ i.syllabus }}" class="btn btn-info"/>View</td>
+      <td>&nbsp;{{ i.year }}</td>
+      <td width="50px"><a href="{{ i.syllabus }}"download class="btn btn-success">Download</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

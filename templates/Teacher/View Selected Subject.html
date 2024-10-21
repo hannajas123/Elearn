@@ -1,0 +1,44 @@
+{% extends 'Teacher/Teacher Home.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/T_selected_subject_post/#abc">
+{% csrf_token %}
+<table class="fa-pull-left">
+  <tr>
+      <td>
+          <input type="text" name="textfield" id="textfield" class="form-control" placeholder="Search with Subject"/></td>
+      <td><input type="submit" value="search"class="btn btn-info"/></td>
+  </tr>
+</table><br><br>
+
+  <table class="table table-bordered">
+    <tr>
+      <th>Sl.no</th>
+      <th>Subject Details</th>
+      <th>Course Details</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.SUBJECT.Subname }}<br>{{ i.SUBJECT.semester }}</td>
+      <td>{{ i.SUBJECT.COURSE.coursename }}</td>
+      <td><a href="/myapp/Add_Queustion_bank/{{ i.SUBJECT.id }}#abc"class="btn btn-outline-success ">Add Questions</a></td>
+            <td><a href="/myapp/Teacher_View_qstn_bank/{{ i.SUBJECT.id }}#abc"class="btn btn-outline-danger">View Questions</a></td>
+      <td><a href="/myapp/Add_notes/{{ i.SUBJECT.id }}#abc"class="btn btn-outline-success">Add Notes</a></td>
+            <td><a href="/myapp/Teacher_View_Notes/{{ i.SUBJECT.id }}#abc"class="btn btn-outline-danger">View Notes</a></td>
+            <td><a href="/myapp/Add_Lecture_video/{{ i.SUBJECT.id }}#abc"class="btn btn-outline-success">Add Videos</a></td>
+            <td><a href="/myapp/Teacher_view_Lecture_video/{{ i.SUBJECT.id }}#abc"class="btn btn-outline-danger">View Videos</a></td>
+
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

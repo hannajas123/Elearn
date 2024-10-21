@@ -1,0 +1,25 @@
+
+{% extends 'Teacher/Teacher Home.html' %}
+{% block body %}
+
+<body>
+
+       <form method="post" action="/myapp/T_send_solution_post/#abc">
+               <table class="table table-bordered ">
+
+           {% csrf_token %}
+                   <tr>
+                       <td width="190px">Solution</td>
+                         <input type="hidden" name="id" value="{{ data.id }}" >
+            <td><textarea name="reply" required class="form-control"></textarea><br>
+                       </td>
+                   </tr>
+                   <tr >
+                       <td colspan="2" align="center">
+        <input type="submit" value="submit"  class="btn btn-success">
+                       </td>
+                   </tr>
+    </table>
+                  </form>
+</body>
+{% endblock %}

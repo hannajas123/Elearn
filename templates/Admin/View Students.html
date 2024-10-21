@@ -1,0 +1,71 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/view_student_post/#abc">
+    {% csrf_token %}
+  <table class="fa-pull-left">
+    <tr>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control"placeholder="Search with Name" /></td>
+      <td><input type="submit" name="button" id="button" value="Search" class="btn btn-info"/></td>
+
+        <td>Choose Course</td>
+        <td> <select name="cname"class="form-control">
+        <option value="">----Select option----</option>
+            {% for v in c %}
+            <option value="{{ v.id }}">{{ v.coursename }}</option>
+            {% endfor %}
+        </select></td>
+
+<td>Choose Semester</td>
+        <td>
+             <select name="sem"class="form-control">
+        <option value="">----Select option----</option>
+        <option value="1">Semester 1</option>
+        <option value="2">Semester 2</option>
+        <option value="3">Semester 3</option>
+        <option value="4">Semester 4</option>
+        <option value="5">Semester 5</option>
+        <option value="6">Semester 6</option>
+
+        </select></td>
+      <td><input type="submit" name="button" id="button" value="go" class="btn btn-info"/></td>
+
+    </tr>
+  </table><br><br>
+  <table class="table table-bordered ">
+    <tr>
+      <th>Sl/No</th>
+      <th>Name</th>
+        <th>DOB</th>
+      <th>Gender</th>
+         <th>contact</th>
+
+      <th>Course</th>
+      <th>Semester</th>
+        <th>Address</th>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{forloop.counter }}</td>
+      <td>{{ i.sname }}<br>
+          <img src="{{ i.photo }}" height="100px" width="100px">
+
+      </td>
+              <td>&nbsp;{{ i.dob }}</td>
+      <td>&nbsp;{{i.gender}}</td>
+        <td>{{ i.email }}<br>
+            {{ i.phone }}&nbsp;</td>
+        <td>{{ i.COURSE.coursename }}</td>
+        <td>{{ i.sem }}</td>
+
+                <td>{{ i.hname }}<br>{{ i.place }}<br>{{ i.city }}</td>
+
+
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

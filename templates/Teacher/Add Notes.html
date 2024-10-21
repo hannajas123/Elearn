@@ -1,0 +1,27 @@
+{% extends 'Teacher/Teacher Home.html' %}
+{% block body %}
+
+<body>
+<form action="/myapp/add_note_post/#abc" method="post" enctype="multipart/form-data" name="form1" id="form1">{% csrf_token %}
+  <table class="table table-bordered">
+    <tr>
+      <td width="190px">Title</td>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" required class="form-control"/></td>
+              <input type="hidden" name="id1" id="textfield"value="{{ data.SUBJECT.id }}" />
+              <input type="hidden" name="id" id="textfield"value="{{ data.id }}" />
+
+
+    </tr>
+    <tr>
+      <td width="190px">Notes</td>
+      <td><label for="fileField"></label>
+      <input type="file" name="fileField" id="fileField" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td colspan="2"align="center"><input type="submit" name="button" id="button" value="Add" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

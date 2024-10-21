@@ -1,0 +1,33 @@
+{% extends 'Student/StudentHome.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/S_Viewdepartment_post/#abc">
+    {% csrf_token %}
+  <table class="fa-pull-left">
+    <tr>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control"placeholder="Search with Department"/></td>
+      <td><input type="submit" value="search" class="btn btn-info"/></td>
+    </tr>
+  </table><br><br>
+  <table class="table table-bordered ">
+    <tr>
+      <th>Sl/no</th>
+      <th>Department name</th>
+        <th></th>
+
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.departmentname }}</td>
+      <td width="50px">
+          <a href="/myapp/S_view_course/{{ i.id }}" class="btn btn-success">Courses</a>
+      </td>
+
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'Teacher/Teacher Home.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/T_View_subject_lis_post/#abc">
+{% csrf_token %}
+<table class="fa-pull-left">
+  <tr>
+      <td>
+          <input type="text" name="textfield" id="textfield" class="form-control"placeholder="Search with subject"/></td>
+      <td><input type="submit" value="search" class="btn btn-info"/></td>
+  </tr>
+</table><br><br>
+  <table class="table table-bordered">
+    <tr>
+      <th>Sl.no</th>
+      <th>Subject</th>
+      <th>Semeester</th>
+      <th>Course Details</th>
+        <td></td>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.Subname }}</td>
+      <td>&nbsp;{{ i.semester }}</td>
+      <td>&nbsp;{{ i.COURSE.coursename }}<br>{{ i.COURSE.totalsem }}</td>
+      <td width="50px"><a href="/myapp/select_sub/{{ i.id }}#abc"class="btn btn-danger">Select</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

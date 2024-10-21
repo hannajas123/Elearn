@@ -1,0 +1,44 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/rejected_teacher_post/#abc">
+    {% csrf_token %}
+  <table class="fa-pull-left">
+    <tr>
+      <td>
+      <input type="text" name="textfield" id="textfield" placeholder="Search with Name" class="form-control"/></td>
+      <td><input type="submit" name="button" id="button" value="Search" class="btn btn-info"/></td>
+
+    </tr>
+  </table><br><br>
+  <table class="table table-bordered ">
+     <tr>
+      <th>Sl/No</th>
+      <th>Name</th>
+        <th>DOB</th>
+      <th>Gender</th>
+              <th>E-mail</th>
+      <th>Phone Number</th>
+
+        <th>Address</th>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{forloop.counter }}</td>
+      <td>{{ i.tname }}
+      <br><img src="{{ i.photo }}" height="100px" width="100px"></td>
+              <td>&nbsp;{{ i.dob }}</td>
+      <td>&nbsp;{{i.gender}}</td>
+        <td>{{ i.email }}</td>
+              <td>{{ i.phone }}&nbsp;</td>
+
+                <td>{{ i.hname }}<br>{{ i.place }}<br>{{ i.city }},</td>
+
+
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

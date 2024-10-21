@@ -1,0 +1,35 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/edit_subject_post/#abc">{% csrf_token %}
+  <table class="table table-bordered">
+    <tr>
+      <td width="190px">Course</td>
+      <td><label for="select"></label>
+        <select name="select" id="select" class="form-control">
+                    <option value="{{ data1.COURSE.id }}">{{ data1.COURSE.coursename }}</option>
+
+            {% for i in data %}
+            <option value="{{ i.id }}">{{ i.coursename }}</option>
+            {% endfor %}
+      </select></td>
+    </tr>
+    <tr>
+      <td width="190px">Subject Name</td>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield"value="{{ data1.Subname }}" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td width="190px">Semester</td>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2"value="{{ data1.semester }}" required class="form-control"/></td>
+      <input type="hidden" name="id1" id="textfield2"value="{{ data1.id }}" />
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="Update" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

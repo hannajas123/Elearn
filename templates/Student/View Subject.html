@@ -1,0 +1,40 @@
+{% extends 'Student/StudentHome.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/S_View_subject_post/#abc">{% csrf_token %}
+<table class="fa-pull-left">
+    <tr>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control"placeholder="Search with Subject"/></td>
+      <td><input type="submit" name="button" id="button" value="Search" class="btn btn-info"/></td>
+
+    </tr>
+  </table>
+<br>
+<br>
+  <table class="table table-bordered ">
+    <tr>
+      <th>Sl.no</th>
+      <th>Subject</th>
+      <th>Semeester</th>
+      <th>Course Details</th>
+        <td></td>
+        <td></td>
+        <td></td>
+
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.Subname }}</td>
+      <td>&nbsp;{{ i.semester }}</td>
+      <td>&nbsp;{{ i.COURSE.coursename }}<br>{{ i.COURSE.totalsem }}</td>
+<td width="50px"><a href="/myapp/S_view_notes/{{ i.id }}#abc"class="btn btn-danger">Notes</a></td>
+<td width="50px"><a href="/myapp/S_view_question_bank/{{ i.id }}#abc"class="btn btn-success">Questions</a></td>
+<td width="50px"><a href="/myapp/S_view_lec_video/{{ i.id }}#abc"class="btn btn-warning">Videos</a><br /> </td>   </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

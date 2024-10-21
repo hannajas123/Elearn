@@ -1,0 +1,49 @@
+{% extends 'Teacher/Teacher Home.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/T_view_notes_post/#abc">
+{% csrf_token %}
+<table class="pull-left">
+    <tr>
+        <td>From</td>
+        <td>
+            <input type="date" placeholder="Search here" name="f" class="form-control">
+        </td>
+        <td>To</td>
+         <td>
+            <input type="date" placeholder="Search here" name="t" class="form-control">
+        </td>
+        <td>
+            <input type="hidden" name="sid"value="{{ id }}">
+
+            <input type="submit" value="Search" class="btn btn-info">
+        </td>
+    </tr>
+</table><br><br>
+
+  <table class="table table-bordered ">
+    <tr>
+      <th>Sl.no</th>
+      <th>Selected Subject Details</th>
+            <th>Date</th>
+      <th>Title</th>
+      <th> Notes</th>
+      <td>&nbsp;</td>
+      <td></td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.SELECTED_SUBJECT.SUBJECT.Subname }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+      <td>{{ i.title }}</td>
+        <td><a href="{{ i.note }}"class="btn btn-info">View</a> </td>
+        <td><a href="{{ i.note }}" download class="btn btn-success">Download</a></td>
+      <td><a href="/myapp/delete_notes/{{ i.id }}#abc"class="btn btn-danger">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

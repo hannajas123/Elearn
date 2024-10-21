@@ -1,0 +1,50 @@
+
+
+{% extends 'Teacher/Teacher Home.html' %}
+{% block body %}
+
+<body>
+<form>
+    <table class="table table-bordered ">
+          <tr>
+        <td colspan="2"align="center"><img src="{{ data.photo }}"height="200px"width="160px" ></td>
+    </tr>
+    <tr>
+        <th width="190px">Name</th>
+        <td>{{ data.tname }}</td>
+    </tr>
+    <tr>
+        <th width="190px">Dob</th>
+        <td>{{ data.dob }}</td>
+    </tr>
+        <tr>
+        <th width="190px">Gender</th>
+        <td>{{ data.gender }}</td>
+    </tr>
+        <tr>
+        <th width="190px">Email</th>
+                    <td>{{ data.email }}</td>
+
+    </tr>
+        <tr>
+        <th width="190px">Phone</th>
+                    <td>{{ data.phone }}</td>
+
+    </tr>
+    <tr>
+        <th width="190px">Address</th>
+        <td>        {{ data.hname }}<br>
+
+            {{ data.place }}<br>
+                        {{ data.city }}</td>
+
+
+    </tr>
+    <tr>
+    </tr>
+
+
+    </table>
+</form>
+</body>
+{% endblock %}

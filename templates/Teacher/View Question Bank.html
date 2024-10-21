@@ -1,0 +1,51 @@
+{% extends 'Teacher/Teacher Home.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/T_view_qstn_bank_post/#abc">
+{% csrf_token %}
+<table class="pull-left">
+    <tr>
+        <td>From</td>
+        <td>
+            <input type="date" placeholder="Search here" name="f" class="form-control">
+        </td>
+        <td>To</td>
+         <td>
+            <input type="date" placeholder="Search here" name="t" class="form-control">
+        </td>
+        <input type="hidden" name="sid"value="{{ id }}">
+
+        <td>
+            <input type="submit" value="Search" class="btn btn-info">
+        </td>
+    </tr>
+</table><br><br>
+
+  <table class="table table-bordered">
+
+    <tr>
+      <th>Sl.no</th>
+      <th>Selected Subject Details</th>
+            <th>Date</th>
+      <th>Title</th>
+      <th>Question Bank</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+   {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.SELECTED_SUBJECT.SUBJECT.Subname }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+      <td>{{ i.title }}</td>
+        <td width="50px"><a href="{{ i.questions }}"class="btn btn-info">View</a> </td>
+{#      <td>&nbsp;<embed type="image/jpg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1667px-PDF_file_icon.svg.png" width="100px"height="100px" alt=""/></td>#}
+        <td width="50px"><a href="{{ i.questions }}" download class="btn btn-success">Download</a></td>
+      <td width="50px"><a href="/myapp/delete_qustn/{{ i.id }}#abc"class="btn btn-danger">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

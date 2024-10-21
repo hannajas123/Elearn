@@ -1,0 +1,59 @@
+{% extends 'Student/StudentHome.html' %}
+{% block body %}
+
+<body>
+  <form method="post" action="/myapp/View_solutions_post/#abc">
+    {% csrf_token %}
+
+
+<div class="container ">
+<br>
+<table class="pull-left">
+    <tr>
+        <td>From</td>
+        <td>
+            <input type="date" placeholder="Search here" name="f" class="form-control">
+        </td>
+        <td>To</td>
+         <td>
+            <input type="date" placeholder="Search here" name="t" class="form-control">
+        </td>
+        <td>
+            <input type="submit" value="Search" class="btn btn-info">
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+
+    <table class="table table-bordered " >
+    <tr>
+        <th>SNo</th>
+        <th>Date</th>
+        <th>To</th>
+        <th>Doubt</th>
+
+<th >Status</th>
+
+         <th >Solution</th>
+
+    </tr>
+       {% for i in data %}
+        <tr>
+    <td width="50px" >{{ forloop.counter }}</td>
+          <td width="110px" >{{ i.date }}</td>
+    <td>{{ i.TEACHER.tname }}</td>
+{#    <td>{{ i.STUDENT.name }}</td>#}
+    <td>{{ i.doubt}}</td>
+ <td>{{ i.Status }}</td>
+    <td>{{ i.Solution }}</td>
+
+
+    </tr>
+    {% endfor %}
+    </table>
+
+</div>
+    </form>
+</body>
+{% endblock %}

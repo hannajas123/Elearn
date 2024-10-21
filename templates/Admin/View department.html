@@ -1,0 +1,34 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/view_depatment_post/#abc">
+    {% csrf_token %}
+  <table class="fa-pull-left">
+    <tr>
+      <td>
+      <input type="text" name="textfield" id="textfield" placeholder="Search by Department" class="form-control"/></td>
+      <td><input type="submit" value="search" class="btn btn-info"/></td>
+    </tr>
+  </table>
+<br>
+<br>
+  <table class="table table-bordered ">
+    <tr>
+      <th>Sl/no</th>
+      <th>Department name</th>
+        <td></td>
+        <td></td>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.departmentname }}</td>
+      <td width="50px"><a href="/myapp/Edit_department/{{ i.id }}#abc" class="btn btn-success">Edit</a></tdwi>
+      <td width="50px"><a href="/myapp/delete_dep/{{ i.id }}#abc" class="btn btn-danger">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

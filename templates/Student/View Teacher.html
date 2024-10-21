@@ -1,0 +1,40 @@
+{% extends 'Student/StudentHome.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/S_ViewTeachers_post/#abc">
+    {% csrf_token %}
+  <table class="fa-pull-left">
+    <tr>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control"placeholder="Search with Name"/></td>
+      <td><input type="submit" name="button" id="button" value="Search" class="btn btn-info"/></td>
+
+    </tr>
+  </table><br><br>
+  <table class="table table-bordered ">
+    <tr>
+      <th>Sl/No</th>
+      <th>Name</th>
+
+      <th>E-mail</th>
+
+
+        <th>Subjects</th>
+        <td></td>
+    </tr>
+     {% for i in data %}
+    <tr>
+      <td width="50px">&nbsp;{{forloop.counter }}</td>
+      <td>{{ i.TEACHER.tname }}<br>
+      <img src="{{ i.TEACHER.photo }}" height="100px" width="100px"></td>
+        <td>{{ i.TEACHER.email }}</td>
+
+
+        <td>{{ i.SUBJECT.Subname }}</td>
+    <td width="50px"><a href="/myapp/S_send_doubts/{{ i.TEACHER.id }}#abc"class="btn btn-success">Doubts</a> </td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

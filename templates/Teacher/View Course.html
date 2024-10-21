@@ -1,0 +1,36 @@
+{% extends 'Teacher/Teacher Home.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/T_view_course_post/#abc">
+    {% csrf_token %}
+<table class="fa-pull-left">
+  <tr>
+      <td>
+          <input type="text" name="textfield" id="textfield" class="form-control"placeholder="Search with Course"/></td>
+      <td><input type="submit" value="search" class="btn btn-info"/></td>
+  </tr>
+</table><br><br>
+  <table class="table table-bordered ">
+  <tr>
+    <th>Sl/No</th>
+    <th>Couse name</th>
+    <th>department name</th>
+    <th>Semester</th>
+
+
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td width="50px">&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.coursename }}</td>
+    <td>&nbsp;{{ i.DEPARTMENT.departmentname }}</td>
+    <td>{{ i.totalsem }}</td>
+              <td><a href="/myapp/T_View_subject_list/{{ i.id }}" class="btn btn-success">Subjects</a></td>
+
+  </tr>
+    {% endfor %}
+</table>
+</form>
+
+</body>
+{% endblock %}
